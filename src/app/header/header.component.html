@@ -1,0 +1,21 @@
+<div class="header">
+  <h1 class="shopName"><a [routerLink]="'/tshirts'">My Shop</a></h1>
+  <div class="search">
+    <p class="searchInput">
+      <input
+        type="text"
+        (input)="changeSearchValue($event)"
+        placeholder="Search"
+      />
+    </p>
+    <p class="icon">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        svgIcon="thumbs-up"
+        class="card"
+        matBadge="{{ count }}"
+      ></mat-icon>
+    </p>
+  </div>
+</div>

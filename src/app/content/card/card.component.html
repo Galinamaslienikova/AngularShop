@@ -1,0 +1,31 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title
+      ><a [routerLink]="['/tshirts', item.id]">
+        {{ item.name }}</a
+      ></mat-card-title
+    >
+  </mat-card-header>
+  <img
+    mat-card-image
+    src="{{ item.picture }}"
+    alt="Photo of a TShirt"
+    class="picture"
+  />
+  <mat-card-content>
+    <p>
+      {{ item.description }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="addToCart(item)">Add to cart</button>
+    <button
+      mat-button
+      disabled="{{ !isInCart }}"
+      (click)="removeFromCart(item.id)"
+    >
+      Remove from cart
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,18 @@
+<app-header></app-header>
+<div class="content">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>{{ tshirt.name }}</mat-card-title>
+        <mat-card-subtitle class="price"
+          >Price:{{ tshirt.price }} zl</mat-card-subtitle
+        >
+        <img mat-card-l-image src="{{ tshirt.picture }}" />
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      {{ tshirt.description }}
+    </mat-card-content>
+  </mat-card>
+</div>
+<app-footer></app-footer>

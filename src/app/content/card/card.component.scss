@@ -1,0 +1,16 @@
+.example-card {
+  max-width: 400px;
+  margin: 10px;
+  box-shadow: 2px 8px 24px 0px rgba(66, 68, 90, 1);
+}
+.picture {
+  max-height: 200px;
+  overflow: hidden;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  cursor: pointer;
+}
