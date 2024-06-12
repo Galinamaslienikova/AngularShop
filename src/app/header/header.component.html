@@ -1,7 +1,7 @@
 <div class="header">
   <h1 class="shopName"><a [routerLink]="'/tshirts'">My Shop</a></h1>
   <div class="search">
-    <p class="searchInput">
+    <p class="searchInput" *ngIf="isSearchShow">
       <input
         type="text"
         (input)="changeSearchValue($event)"
@@ -15,6 +15,7 @@
         svgIcon="thumbs-up"
         class="card"
         matBadge="{{ count }}"
+        [routerLink]="'/cart'"
       ></mat-icon>
     </p>
   </div>

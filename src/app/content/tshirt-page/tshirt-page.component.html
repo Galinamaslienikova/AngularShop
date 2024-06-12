@@ -1,18 +1,6 @@
-<app-header></app-header>
-<div class="content">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title-group>
-        <mat-card-title>{{ tshirt.name }}</mat-card-title>
-        <mat-card-subtitle class="price"
-          >Price:{{ tshirt.price }} zl</mat-card-subtitle
-        >
-        <img mat-card-l-image src="{{ tshirt.picture }}" />
-      </mat-card-title-group>
-    </mat-card-header>
-    <mat-card-content>
-      {{ tshirt.description }}
-    </mat-card-content>
-  </mat-card>
+<app-header [isSearchShow]="false"></app-header>
+<div class="content" *ngIf="!isLoading">
+  <app-tshirt [tshirt]="tshirt"></app-tshirt>
 </div>
+<div class="content" *ngIf="isLoading"><mat-spinner></mat-spinner></div>
 <app-footer></app-footer>

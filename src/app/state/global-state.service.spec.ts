@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GlobalStateService } from './global-state.service';
+import { GlobalStateService } from './state/global-state.service';
 
 describe('GlobalStateService', () => {
   let service: GlobalStateService;

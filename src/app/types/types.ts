@@ -5,3 +5,5 @@ export type Item = {
   price: number;
   description: string;
 };
+
+export type ItemInCart = Item & { count: number };

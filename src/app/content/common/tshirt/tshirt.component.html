@@ -1,0 +1,28 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>{{ tshirt.name }}</mat-card-title>
+      <mat-card-subtitle class="price">
+        Price:{{ tshirt.price | price }}
+      </mat-card-subtitle>
+      <mat-card-actions>
+        <button class="price button" mat-button (click)="addItem(tshirt)">
+          Add to cart
+        </button>
+        <span class="count"> {{ count }}</span>
+        <button
+          [disabled]="count === 0"
+          class="price button"
+          mat-button
+          (click)="removeItem(tshirt.id)"
+        >
+          Remove from cart
+        </button>
+      </mat-card-actions>
+      <img mat-card-l-image src="{{ tshirt.picture }}" />
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>
+    {{ tshirt.description }}
+  </mat-card-content>
+</mat-card>

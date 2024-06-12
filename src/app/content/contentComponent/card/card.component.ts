@@ -1,14 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { GlobalStateService } from '../../global-state.service';
-import { Item } from '../types';
+import { GlobalStateService } from '../../../state/global-state.service';
+import { Item } from '../../../types/types';
 import { RouterLink } from '@angular/router';
+import { PricePipe } from '../../../helpers/price/price.pipe';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, RouterLink],
+  imports: [MatCardModule, MatButtonModule, RouterLink, PricePipe],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
 })
@@ -17,13 +18,7 @@ export class CardComponent implements OnInit {
 
   isInCart: boolean = false;
 
-  @Input() item: Item = {
-    picture: '',
-    name: '',
-    id: '',
-    price: 0,
-    description: '',
-  };
+  @Input() item!: Item;
 
   ngOnInit(): void {
     this.globalState.cart$.subscribe(

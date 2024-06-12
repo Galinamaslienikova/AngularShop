@@ -9,7 +9,6 @@ import { tshirts } from '../src/data';
 export class DataBaseService implements InMemoryDbService {
   constructor() {}
   createDb(): {} | Observable<{}> | Promise<{}> {
-    console.log('databasesreffag');
     return { tshirts };
   }
 }

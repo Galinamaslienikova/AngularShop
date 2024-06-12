@@ -8,10 +8,10 @@ import {
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry, MatIconModule } from '@angular/material/icon';
-import { GlobalStateService } from '../global-state.service';
-import { ActivatedRoute } from '@angular/router';
+import { GlobalStateService } from '../state/global-state.service';
 import { MatBadgeModule } from '@angular/material/badge';
 import { RouterLink } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 const icon = `<svg
     xmlns="http://www.w3.org/2000/svg"
@@ -40,18 +40,18 @@ const icon = `<svg
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatIconModule, MatBadgeModule, RouterLink],
+  imports: [MatIconModule, MatBadgeModule, RouterLink, NgIf],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {
+  @Input() isSearchShow: boolean = true;
   searchValue: string = '';
   count: number = 0;
   constructor(
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
-    private globalState: GlobalStateService,
-    private route: ActivatedRoute
+    private globalState: GlobalStateService
   ) {
     iconRegistry.addSvgIconLiteral(
       'thumbs-up',
@@ -61,9 +61,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.globalState.search$.subscribe((data) => (this.searchValue = data));
-    this.globalState.cart$.subscribe((data) => (this.count = data.length));
-    this.route.params.subscribe((params) => {
-      console.log('params', params);
+    this.globalState.cart$.subscribe((data) => {
+      this.count = data.reduce(
+        (accumulator, item) => accumulator + item.count,
+        0
+      );
     });
   }
 

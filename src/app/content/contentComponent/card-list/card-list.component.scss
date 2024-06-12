@@ -1,0 +1,21 @@
+.listContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80%;
+}
+.sorting {
+  display: flex;
+  justify-content: end;
+  padding: 10px;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+}

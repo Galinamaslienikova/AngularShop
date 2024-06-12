@@ -1,0 +1,8 @@
+<app-header [isSearchShow]="false"></app-header>
+<div class="content">
+  <div class="total">Total: {{ total | price }}</div>
+  <div *ngFor="let item of items">
+    <app-tshirt [tshirt]="item"></app-tshirt>
+  </div>
+</div>
+<app-footer></app-footer>
