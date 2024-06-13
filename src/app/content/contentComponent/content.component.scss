@@ -1,6 +1,6 @@
-.content {
-  box-sizing: border-box;
-}
-.container{
-  height: 100%;
+.container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

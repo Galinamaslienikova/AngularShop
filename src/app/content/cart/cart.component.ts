@@ -6,6 +6,7 @@ import { TshirtComponent } from '../common/tshirt/tshirt.component';
 import { FooterComponent } from '../../footer/footer.component';
 import { HeaderComponent } from '../../header/header.component';
 import { PricePipe } from '../../helpers/price/price.pipe';
+import { tshirts } from '../../../data';
 
 @Component({
   selector: 'app-cart',
@@ -26,18 +27,16 @@ export class CartComponent implements OnInit {
   total: number = 0;
   constructor(private globalState: GlobalStateService) {}
   ngOnInit(): void {
-    this.globalState.cart$.subscribe(
-      (data) => {
+    this.globalState.cart$.subscribe({
+      next: (data) => {
         this.items = data;
         this.total = data.reduce(
           (accumulator, item) => accumulator + item.count * item.price,
           0
         );
       },
-      null,
-      () => {
-        this.isLoading = false;
-      }
-    );
+      error: (error) => console.log(error),
+      complete: () => (this.isLoading = false),
+    });
   }
 }

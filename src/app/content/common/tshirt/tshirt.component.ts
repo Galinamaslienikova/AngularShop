@@ -1,5 +1,5 @@
 import { Item, ItemInCart } from '../../../types/types';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { GlobalStateService } from '../../../state/global-state.service';
@@ -16,6 +16,7 @@ export class TshirtComponent implements OnInit {
   @Input() tshirt!: Item;
   count: number = 0;
   constructor(private globalState: GlobalStateService) {}
+
   ngOnInit(): void {
     this.globalState.cart$.subscribe((data) => {
       const item: ItemInCart = data.filter(

@@ -1,7 +1,13 @@
-.content {
-  height: 80%;
+.container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .total {
   background-color: yellow;
   width: fit-content;
+}
+.content {
+  min-height: 80%;
 }

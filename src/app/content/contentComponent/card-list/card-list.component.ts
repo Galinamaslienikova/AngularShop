@@ -98,16 +98,15 @@ export class CardListComponent implements OnInit, DoCheck, OnDestroy {
     this.contentServer
       .getTshirts()
       .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe(
-        (res) => {
+      .subscribe({
+        next: (res) => {
           this.list = res;
           this.defaultList = res;
         },
-        null,
-        () => {
+        complete: () => {
           this.isLoading = false;
-        }
-      );
+        },
+      });
     this.globalState.search$
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((data) => (this.search = data));
