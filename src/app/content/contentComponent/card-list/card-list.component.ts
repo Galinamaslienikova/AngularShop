@@ -1,5 +1,5 @@
 import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
-import { ContentServerService } from '../../server/content-server.service';
+import { ContentService } from '../../content-service/content-service.service';
 import { Item } from '../../../types/types';
 import { CardComponent } from '../card/card.component';
 import { NgFor, NgIf } from '@angular/common';
@@ -25,16 +25,15 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
   templateUrl: './card-list.component.html',
   styleUrl: './card-list.component.scss',
 })
-export class CardListComponent implements OnInit, DoCheck, OnDestroy {
+export class CardListComponent implements OnInit, DoCheck {
   constructor(
-    private contentServer: ContentServerService,
+    private contentServer: ContentService,
     private globalState: GlobalStateService
   ) {}
   defaultList: Item[] = [];
   list: Item[] = [];
   search: string = '';
   isLoading: boolean = true;
-  private ngUnsubscribe = new Subject<void>();
   sortValue = new FormControl('name');
   pageSize = 4;
   pageIndex = 0;
@@ -95,26 +94,15 @@ export class CardListComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.contentServer
-      .getTshirts()
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe({
-        next: (res) => {
-          this.list = res;
-          this.defaultList = res;
-        },
-        complete: () => {
-          this.isLoading = false;
-        },
-      });
-    this.globalState.search$
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((data) => (this.search = data));
-  }
-
-  ngOnDestroy() {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
-    this.globalState.setSearchValue('');
+    this.contentServer.getTshirts().subscribe({
+      next: (res) => {
+        this.list = res;
+        this.defaultList = res;
+      },
+      complete: () => {
+        this.isLoading = false;
+      },
+    });
+    this.globalState.search$.subscribe((data) => (this.search = data));
   }
 }

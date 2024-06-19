@@ -27,11 +27,11 @@ export class CardComponent implements OnInit {
     );
   }
 
-  addToCart(item: Item) {
+  addToCart() {
     this.globalState.addItem(this.item);
   }
 
-  removeFromCart(id: string) {
-    this.globalState.removeItem(id);
+  removeFromCart() {
+    this.globalState.removeItem(this.item.id);
   }
 }

@@ -2,9 +2,9 @@
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title
-      ><a [routerLink]="['/tshirts', item.id]">
-        {{ item.name }}</a
-      ></mat-card-title
+      ><a [routerLink]="['/tshirts', item.id]">{{
+        item.name
+      }}</a></mat-card-title
     >
   </mat-card-header>
   <img
@@ -20,11 +20,12 @@
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button (click)="addToCart(item)">Add to cart</button>
+    <button id="addBtn" mat-button (click)="addToCart()">Add to cart</button>
     <button
+      id="removeBtn"
       mat-button
       disabled="{{ !isInCart }}"
-      (click)="removeFromCart(item.id)"
+      (click)="removeFromCart()"
     >
       Remove from cart
     </button>

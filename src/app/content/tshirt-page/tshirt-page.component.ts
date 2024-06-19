@@ -1,7 +1,7 @@
 import { Item } from '../../types/types';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ContentServerService } from '../server/content-server.service';
+import { ContentService } from '../content-service/content-service.service';
 import { HeaderComponent } from '../../header/header.component';
 import { FooterComponent } from '../../footer/footer.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -32,23 +32,19 @@ export class TshirtPageComponent implements OnInit {
   };
   isLoading: boolean = true;
 
-  constructor(
-    private route: ActivatedRoute,
-    private http: ContentServerService
-  ) {}
+  constructor(private route: ActivatedRoute, private http: ContentService) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.id = params['id'];
     });
-    this.http.getOneTshirt(this.id).subscribe(
-      (data) => {
+    this.http.getOneTshirt(this.id).subscribe({
+      next: (data) => {
         this.tshirt = data[0];
       },
-      null,
-      () => {
+      complete: () => {
         this.isLoading = false;
-      }
-    );
+      },
+    });
   }
 }

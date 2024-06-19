@@ -5,7 +5,7 @@ import { Item } from '../../types/types';
 @Injectable({
   providedIn: 'root',
 })
-export class ContentServerService {
+export class ContentService {
   URL = 'api/';
 
   constructor(private http: HttpClient) {}
