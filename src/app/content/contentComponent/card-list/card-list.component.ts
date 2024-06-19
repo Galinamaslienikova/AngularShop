@@ -4,8 +4,6 @@ import { Item } from '../../../types/types';
 import { CardComponent } from '../card/card.component';
 import { NgFor, NgIf } from '@angular/common';
 import { GlobalStateService } from '../../../state/global-state.service';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';

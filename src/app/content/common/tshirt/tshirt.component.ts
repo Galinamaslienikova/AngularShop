@@ -30,10 +30,10 @@ export class TshirtComponent implements OnInit {
     });
   }
 
-  removeItem(id: string) {
-    this.globalState.removeOneItem(id);
+  removeItem() {
+    this.globalState.removeOneItem(this.tshirt.id);
   }
-  addItem(item: Item | ItemInCart) {
-    this.globalState.addItem(item);
+  addItem() {
+    this.globalState.addItem(this.tshirt);
   }
 }

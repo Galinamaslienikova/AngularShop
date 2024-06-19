@@ -6,12 +6,7 @@
         Price:{{ tshirt.price | price }}
       </mat-card-subtitle>
       <mat-card-actions>
-        <button
-          id="addBtn"
-          class="price button"
-          mat-button
-          (click)="addItem(tshirt)"
-        >
+        <button id="addBtn" class="price button" mat-button (click)="addItem()">
           Add to cart
         </button>
         <span class="count"> {{ count }}</span>
@@ -20,7 +15,7 @@
           [disabled]="count === 0"
           class="price button"
           mat-button
-          (click)="removeItem(tshirt.id)"
+          (click)="removeItem()"
         >
           Remove from cart
         </button>

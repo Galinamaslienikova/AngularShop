@@ -6,7 +6,6 @@ import { TshirtComponent } from '../common/tshirt/tshirt.component';
 import { FooterComponent } from '../../footer/footer.component';
 import { HeaderComponent } from '../../header/header.component';
 import { PricePipe } from '../../helpers/price/price.pipe';
-import { tshirts } from '../../../data';
 
 @Component({
   selector: 'app-cart',
